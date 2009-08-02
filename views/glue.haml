@@ -1,0 +1,316 @@
+/ title: The awesome Glue!
+/ description: Glue is a simple static site generator for Ruby that uses Haml, Sass and Textile/Markdown.
+/ keywords: Glue, Ruby, Static Site, Haml, Sass, Markdown, Textile
+/ layout: main
+/ id: glue
+/ index: yes
+/ tagline: Static site generator
+
+%p 
+  You can create static website so easily that you’ll imagine how could you live without it!
+  %br
+  Glue has only what you’ll need:
+
+%ul
+  %li Partial support
+  %li Automatic Sitemap &amp; Feed from your pages
+  %li Simple text writing using Markdown or Textile
+  %li Beautiful and easy-to-maintain layouts using Haml &amp; Sass
+
+%h2#getting-started Getting started
+
+%p
+  To install Glue, you’ll need a working Ruby installation with Rubygems. 
+  If you’re cool with it, just run the following command to install it.
+
+%pre
+  sudo gem install fnando-glue -s http://gems.github.com
+
+%p
+  After installing Glue and its dependencies, you can create your site so easily! 
+  Just run the following command from your terminal window.
+
+%pre
+  :preserve
+    $ glue mysite
+    creating mysite directory... done!
+    creating public directory... done!
+    creating public/javascripts directory... done!
+    creating public/images directory... done!
+    creating views/layouts directory... done!
+    creating config directory... done!
+    &nbsp;copying config/glue.yml... done!
+    &nbsp;copying views/stylesheets/style.sass... done!
+    &nbsp;copying Rakefile... done!
+    &nbsp;copying config/helper.rb... done!
+    &nbsp;copying views/layouts/main.haml... done!
+    &nbsp;copying views/index.haml... done!
+    &nbsp;copying views/404.haml... done!
+    &nbsp;copying views/_footer.haml... done!
+    &nbsp;copying public/.htaccess... done!
+    &nbsp;copying public/robots.txt... done!
+
+%p 
+  This command will create a <code>mysite</code> directory with all the Glue structure.
+  Now you're ready to configure your Glue site.
+  
+%h3#configuring Configuring
+  
+%p
+  All your site settings are defined in <code>config/glue.yml</code>. 
+  There are 3 main blocks: <code>site</code>, <code>sitemap</code> and <code>feed</code>.
+
+%pre
+  :preserve
+    site:
+      # Set default page title.
+      title: "The awesome Glue!"
+
+      # Set default page description
+      description: "Glue is a simple static site generator for Ruby that uses Haml, Sass and Textile/Markdown."
+
+      # Set default keywords
+      keywords: "glue, ruby, haml, sass, static site, textile, markdown"
+
+      # Set your base url.
+      # Include domain and path (if needed).
+      # Domain is required for sitemap generation.
+      base_url: http://fnando.github.com/
+
+      # If you're using Apache you can enable `MultiViews`
+      # or mod_rewrite and access your URL like 
+      # http://example.com/about instead of http://example.com/about.html
+      friendly_url: true
+
+      # Set your language for feeds and meta tags
+      language: en-us
+
+    sitemap:
+      # Do generate sitemap
+      enabled: true
+
+      # Filters will be applied against full filename.
+      # Use .*? to match all. Use regular expressions.
+      filters:
+        - .*?
+
+    feed:
+      # Do generate feed
+      enabled: true
+
+      # Filters will be applied against full filename.
+      # Use .*? to match all. Use regular expressions.
+      filters:
+        - .*?
+
+%h2#views Views
+
+%p
+  Views are placed in the "views" directory. All <code>.haml</code> files will be exported as <code>.html</code>, 
+  respecting the structure you define.
+
+%p
+  So, if you create a file <code>views/index.haml</code>, a correspondent <code>public/index.html</code> will be exported; 
+  if you create <code>views/articles/using-glue.haml</code>, Glue will export it as 
+  <code>public/articles/using-glue.html</code>, and so on.
+  
+%h3#meta Meta data
+
+%p
+  To specify layouts, titles, descriptions and any other value you want, your document must have <em>meta data</em>.
+  Meta data is nothing but Haml comments. Here's the meta data from this page you're viewing:
+
+%pre
+  :preserve
+    / title: The awesome Glue!
+    / description: Glue is a simple static site generator for Ruby that uses Haml, Sass and Textile/Markdown.
+    / keywords: Glue, Ruby, Static Site, Haml, Sass, Markdown, Textile
+    / layout: main
+    / id: glue
+    / tagline: Static site generator
+    / version: 0.0.5
+  
+%p
+  The are some meta data that is Glue-reserved.
+  
+%dl
+  %dt
+    %code layout
+  %dd 
+    Specify the layout your page is going to use. Layouts must be placed on <code>views/layouts</code>.
+    If you don't want to use a layout, set it to <code>none</code>.
+  
+  %dt
+    %code index
+  %dd 
+    When set to <code>yes</code>, define if the current page should also exported as <code>public/index.html</code>.
+    The default is <code>no</code>.
+  
+  %dt
+    %code sitemap
+  %dd
+    When set to <code>no</code>, the page is not added to <code>public/sitemap.xml</code>.
+    The default is <code>yes</code>.
+  
+  %dt
+    %code feed
+  %dd
+    When set to <code>no</code>, the page is not added to <code>public/feed.xml</code>.
+    The default is <code>yes</code>.
+
+%h3#using-helpers Using helpers
+
+%p 
+  There are some helpers that comes with Glue:
+
+%dl
+  %dt
+    %code markdown(text)
+  %dd 
+    Parse a given text as Markdown code.
+    
+    %pre
+      :preserve
+        %p
+          :markdown
+            This text will be converted to HTML using 
+            [RDiscount](http://github.com/rtomayko/rdiscount/tree/master).
+    
+    You can call it directly:
+    
+    %pre
+      :preserve
+        %p= markdown("*Markdown* rules!")
+    
+  %dt
+    %code textile(text)
+  %dd 
+    Parse a given text as Textile code.
+
+    %pre
+      :preserve
+        %p
+          :textile
+            This text will be converted to HTML using 
+            "RedCloth":http://redcloth.org/.
+
+    You can call it directly:
+
+    %pre
+      :preserve
+        %p= textile("*Textile* rules!")
+  
+  %dt
+    %code haml(text)
+  %dd 
+    Parse a given text as Haml code.
+
+    You can call it directly:
+
+    %pre
+      :preserve
+        %p= haml("%strong Haml\nis so nice!")
+
+  %dt
+    %code url_for(path, options={})
+  %dd 
+    Return an URL considering the <code>base_url</code> configuration option.
+    If you want to retrieve a full URL (that include the host), set the option
+    <code>:full</code> to <code>true</code>.
+
+    %pre
+      :preserve
+        %p= url_for("feed.xml", :full => true)
+  
+  %dt
+    %code feed_tag
+  %dd 
+    Return the <code>link</code> tag pointing to your <code>feed.xml</code>.
+
+    %pre
+      :preserve
+        = feed_tag
+  
+  %dt
+    %code render(path)
+  %dd 
+    Render will lookup for the path your provide, according to the file extension.
+    The example below will search for <code>footer.haml</code>, <code>footer.markdown</code> and
+    then <code>footer.textile</code>, rendering the first it founds.
+
+    %pre
+      :preserve
+        = render("footer")
+  
+%p
+  To add your own helpers, use the file <code>config/helper</code>.
+  Let's create a helper that reverses a given text.
+
+%pre
+  :preserve
+    module Helper
+      def reversed(text)
+        text.reverse
+      end
+    end
+
+%p
+  Just call it from your view like this:
+
+%pre
+  :preserve
+    %p
+      = reversed("Some cool text!")
+
+%p
+  Notice that you need to return a string. DO NOT output directly; 
+  use the equal sign like in <code>= reversed("Some cool text!")</code>
+
+%p
+  If you want to output directly, use the <code>haml_concat</code> method in your helper.
+
+%pre
+  :preserve
+    module Helper
+      def reversed(text)
+        haml_concat text.reverse
+      end
+    end
+
+%p
+  Then you can just call the helper.
+  
+%pre
+  :preserve
+    %p
+      - reversed("Some cool text!")
+
+%h2 Capistrano & Dreamhost
+
+%p 
+  Here's a simple deploy task for Capistrano & Dreamhost. 
+  First, create a new domain/subdomain pointing to the <code>public</code> directory.
+
+%p
+  Then run <code>capify</code> from the root directory. Edit the <code>config/deploy.rb</code> file,
+  pasting the sample below.
+  
+%pre
+  :preserve
+    set :application, "howto"
+    set :scm, :git
+    set :repository,  "git@github.com:USER/some-repo.git"
+    set :deploy_to, "/home/USER/example.com"
+    set :user, "USER"
+    set :use_sudo, false
+
+    role :web, "example.com"
+
+%p
+  Now, run <code>cap deploy:setup</code> to prepare your server.
+  To update your site, just run <code>cap deploy:update</code>.
+
+%p
+  Could not be easier!
+
+= render("footer")

@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  display: block;
+  font-family: "Lucida Grande", Arial, sans-serif;
+  font-size: 14px;
+  margin: 50px 0 25px 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: !helvetica;
+  letter-spacing: -1px; }
+
+#header {
+  display: inline-block;
+  padding: 10px 10px 10px 130px;
+  position: relative; }
+  #header h1 {
+    font-size: 24px; }
+  #header p.tagline {
+    font-weight: bold;
+    margin-top: -3px; }
+  #header .version {
+    font-size: 48px;
+    font-family: !helvetica;
+    left: 10px;
+    letter-spacing: -3px;
+    position: absolute;
+    top: 3px; }
+
+#page {
+  width: 700px; }
+
+p.description {
+  font-family: helvetica!;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: -2px;
+  margin: 0; }
+
+#main {
+  padding: 20px 20px 20px 40px; }
+  #main p {
+    margin: 10px 0; }
+  #main ul {
+    margin: 0 0 0 20px; }
+  #main h2 {
+    font-weight: normal;
+    font-size: 24px;
+    margin: 30px 0 10px; }
+  #main h3 {
+    font-weight: normal;
+    font-size: 16px;
+    margin: 30px 0 10px;
+    text-transform: uppercase; }
+  #main pre {
+    font-family: Monaco, monospace;
+    font-size: 12px;
+    margin-left: 15px;
+    padding: 10px; }
+  #main dt {
+    margin-top: 15px; }
+
+#glue {
+  background: #1d2a42 url(../images/glue.png) repeat-y left;
+  color: #fff; }
+  #glue #header {
+    background: #e61c0e; }
+  #glue p.description {
+    color: #ffe400; }
+  #glue pre, #glue #main code {
+    color: #9ff81f; }
+  #glue dt {
+    margin-bottom: 5px; }
+  #glue dt code {
+    background: #9ff81f;
+    color: #1d2a42 !important;
+    padding: 2px; }
+  #glue a {
+    color: #fff; }

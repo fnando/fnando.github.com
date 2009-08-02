@@ -1,0 +1,40 @@
+site:
+  # Set default page title.
+  title: "The awesome Glue!"
+  
+  # Set default page description
+  description: "Glue is a simple static site generator for Ruby that uses Haml, Sass and Textile/Markdown."
+  
+  # Set default keywords
+  keywords: "glue, ruby, haml, sass, static site, textile, markdown"
+  
+  # Set your base url.
+  # Include domain and path (if needed).
+  # Domain is required for sitemap generation.
+  base_url: http://fnando.github.com/
+  
+  # If you're using Apache you can enable `MultiViews`
+  # or mod_rewrite and access your URL like 
+  # http://example.com/about instead of http://example.com/about.html
+  friendly_url: false
+  
+  # Set your language for feeds and meta tags
+  language: en-us
+
+sitemap:
+  # Do generate sitemap
+  enabled: false
+  
+  # Filters will be applied against full filename.
+  # Use .*? to match all. Use regular expressions.
+  filters:
+    - .*?
+  
+feed:
+  # Do generate feed
+  enabled: false
+  
+  # Filters will be applied against full filename.
+  # Use .*? to match all. Use regular expressions.
+  filters:
+    - .*?

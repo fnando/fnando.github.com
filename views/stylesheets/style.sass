@@ -1,0 +1,99 @@
+!helvetica = "font-family: Helvetica, Arial, sans-serif"
+
+*
+  margin: 0
+  padding: 0
+
+body
+  display: block
+  font-family: "Lucida Grande", Arial, sans-serif
+  font-size: 14px
+  margin: 50px 0 25px 0
+
+h1, h2, h3, h4, h5, h6
+  font-family: !helvetica
+  letter-spacing: -1px
+
+#header
+  display: inline-block
+  padding: 10px 10px 10px 130px
+  position: relative
+  
+  & h1
+    font-size: 24px
+  
+  & p.tagline
+    font-weight: bold
+    margin-top: -3px
+    
+  & .version
+    font-size: 48px
+    font-family: !helvetica
+    left: 10px
+    letter-spacing: -3px
+    position: absolute
+    top: 3px
+
+#page
+  width: 700px
+  
+p.description
+  font-family: helvetica!
+  font-weight: bold
+  font-size: 30px
+  letter-spacing: -2px
+  margin: 0
+
+#main
+  padding: 20px 20px 20px 40px
+  
+  & p
+    margin: 10px 0
+  
+  & ul
+    margin: 0 0 0 20px
+    
+  & h2
+    font-weight: normal
+    font-size: 24px
+    margin: 30px 0 10px
+  
+  & h3
+    font-weight: normal
+    font-size: 16px
+    margin: 30px 0 10px
+    text-transform: uppercase
+  
+  & pre
+    font-family: Monaco, monospace
+    font-size: 12px
+    margin-left: 15px
+    padding: 10px
+  
+  & dt
+    margin-top: 15px
+
+// Themes
+#glue
+  background: #1d2a42 url(../images/glue.png) repeat-y left
+  color: #fff
+  
+  & #header
+    background: #e61c0e
+  
+  & p.description
+    color: #ffe400
+  
+  & pre, #main code
+    color: #9ff81f
+  
+  & dt
+    margin-bottom: 5px
+  
+  & dt code
+    background: #9ff81f
+    color: #1d2a42 !important
+    padding: 2px
+  
+  & a
+    color: #fff
