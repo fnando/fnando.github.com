@@ -1,0 +1,268 @@
+/ title: Kitabu
+/ description: A framework for creating e-books from Markdown/Textile text markup using Ruby. Using the Prince PDF generator, you'll be able to get high quality PDFs.
+/ keywords: Kitabu, Ruby, PDF, Prince XML, Markdown, Textile
+/ layout: main
+/ id: kitabu
+/ index: yes
+/ tagline: PDF Generator
+
+%h2#installing Installing
+
+%p
+  To install Kitabu, you’ll need a working Ruby installation with Rubygems. 
+  If you’re cool with it, just run the following command to install it.
+
+%pre
+  sudo gem install fnando-kitabu -s http://gems.github.com
+
+%p
+  If you don't need syntax highlighting, you can skip the next steps.
+
+%p
+  :markdown
+    To have syntax highlighting support, you need to install Oniguruma regular expression 
+    library that can be found at <http://www.geocities.jp/kosako3/oniguruma/>.
+
+%p
+  Finally, install the Ultraviolet gem:
+  
+%pre
+  sudo gem install ultraviolet
+
+%p
+  You might get this error (specially on Linux):
+
+%pre
+  :preserve
+    require 'uv'
+    LoadError: libonig.so.2: cannot open shared object file: No such file or directory - 
+    /usr/lib/ruby/gems/1.8/gems/oniguruma-1.1.0/lib/oregexp.so
+
+%p
+  It means Ruby can’t find <code>libonig.so.2</code>. 
+  Add the path to the directory where the file is located to <code>/etc/ld.so.conf</code>:
+
+%pre
+  :preserve
+    include /etc/ld.so.conf.d/*.conf
+    include /usr/local/lib
+
+%p
+  Save the file and execute the command <code>ldconfig</code>
+
+%h2#getting-started Getting started
+
+%p
+  After installing Kitabu and its dependencies, you can create your PDF so easily! 
+  Just run the following command from your terminal window.
+
+%pre
+  $ kitabu mypdf
+
+%p
+  You can check available layouts and themes with <code>kitabu --help</code>.
+
+%p 
+  The kitabu command creates a directory "mybook" with the following structure:
+
+:markdown
+  - mypdf
+  	- config.yml
+  	- images
+  	- output
+  	- Rakefile
+  	- templates
+  		- layout.css
+  		- layout.html
+  		- syntax.css
+  		- user.css
+  	- text
+
+%p
+  The <code>config.yml</code> file holds some information about your book; so you'll always
+  change it. This is the default generated file:
+
+%pre
+  :preserve
+    title: [Your Book Title]
+    copyright: Copyright (c) 2008 [Your Name], All Rights Reserved
+    authors:
+      - [Your Name]
+      - [Other Name]
+    subject: [Write down what your book is about]
+    keywords: [The keywords related to your book]
+    theme: eiffel
+
+%p
+  If you're writing on a different language, the <code>user.css</code> file can override all
+  the messages added by the <code>layout.css</code>. Examples on doing this coming soon.
+
+%p
+  Now it's time to write your book. All your book content will be placed on the
+  text directory. Kitabu requires you to separate your book into chapters. 
+  A chapter is nothing but a directory that holds lots of Markdown/Textile files.
+  The book will be generated using every folder/file alphabetically. So be sure 
+  to use a sequential numbering as the name. Here's a sample:
+
+:markdown
+  - text
+  	- 01_Introduction
+  		- 01\_introduction.markdown
+  	- 02\_What\_is\_Ruby\_on\_Rails
+  		- 01\_MVC.markdown
+  		- 02\_DRY.markdown
+  		- 03\_Convention\_Over\_Configuration.markdown
+  	- 03\_Installing\_Ruby\_on\_Rails
+  		- 01\_Installing.textile
+  		- 02\_Mac\_OS\_X\_instructions.textile
+  		- 03\_Windows\_instructions.markdown
+  		- 04\_Ubuntu\_Linux\_instructions.markdown
+
+%p
+  If you prefer, you can add a chapter per file:
+
+:markdown
+  - text
+  	- 01\_Introduction.markdown
+  	- 02\_What\_is\_Ruby\_on\_Rails.markdown
+  	- 03\_Installing\_Ruby\_on\_Rails.markdown
+
+%p
+  Note that you can use Textile or Markdown at the same time. Just use the 
+  <code>.markdown</code> or <code>.textile</code> file extension.
+
+%p
+  You'll want to see your progress eventually; it's time for you to generate
+  the book PDF. Just run the command <code>rake kitabu:pdf</code> and your book will be 
+  created on the output directory.
+
+%p
+  There are other rake tasks you can use:
+
+:markdown
+  * `kitabu:html` - generate a html from your content
+  * `kitabu:syntaxes` - list all available syntaxes
+  * `kitabu:themes` - list all available themes
+  * `kitabu:titles` - list all titles and its permalinks
+  * `kitabu:watch` - watch `text` for any change and automatically generate html
+
+%p
+  Kitabu can generate a Table of Contents (TOC) based on your h2-h6 tags. The 
+  h1 tag is discarded because it's meant to be the book title.
+
+%p
+  If you need to link to a specific chapter, you can use the <code>kitabu:titles</code> rake
+  task to know what's the permalink that you need. For example, a title 
+  <code>Installing Mac OS X</code> will have a permalink <code>installing-mac-os-x</code> and you can
+  link to this chapter by writing
+  <code>"See more on Installing Mac OS X":#installing-mac-os-x</code> on Textile documents.
+
+%p
+  To generate the TOC, you need to print a variable called <code>toc</code>, using the eRb
+  tag <code><%= toc %></code>.
+
+%h2
+  Syntax Highlighting
+
+%p
+  If you're using Textile, all you need to do is use the tag <code>syntax.</code>. For 
+  example, to highlight a code added right into your text, just do something like
+
+%pre
+  :preserve
+    syntax(ruby_on_rails). class User < ActiveRecord::Base
+      validates_presence_of :login, :password, :email
+    __
+      validates_uniqueness_of :login, :email
+    end
+
+%p
+  To keep multiple line breaks into a single code block, add a line <code>__</code>;
+  Kitabu will replace it when generating the HTML file.
+
+%p
+  If you want to highlight a file, you need to place it into the <code>code</code> 
+  directory and call it like this:
+
+%pre
+  syntax(ruby_on_rails). some_file.rb
+
+%p
+  You can specify the lines you want to highlight; the example below will 
+  highlight lines 10-17 from some_file.rb.
+
+%pre
+  syntax(ruby_on_rails 10,17). some_file.rb
+
+%p
+  You can also specify named blocks to highlight. Named blocks are identified
+  by <code>#begin</code> and <code>#end</code> marks. 
+  If <code>some_file.rb</code> has the following code
+
+%pre
+  :preserve
+    require "rubygems"
+    require "hpricot"
+    require "open"
+
+    # begin: get_all_h2_tags
+    doc = Hpricot(open('http://simplesideias.com.br'))
+    (doc/"h2").each {|h2| puts h2.inner_text }
+    # end: get_all_h2_tags
+
+%p
+  you can get the code between <code>get_all_h2_tags</code> using
+
+%pre
+  syntax(ruby#get_all_h2_tags). some_file.rb
+
+%p
+  %strong Nota:
+  Makdown uses the same syntax above. You just need to indent your code
+  (as usual) and add the <code>syntax.</code> thing as the first line.
+
+%h2#textile-special-tags Textile special tags
+
+%p
+  Kitabu extends Textile with some interesting tags:
+
+%h3 Footnote
+
+%pre
+  Ruby on Rails %{"Rails" and "Ruby on Rails" are trademarks of David Heinemeier Hansson}
+  
+%h3 Figure
+
+%pre
+  figure(This is the caption). some_image.jpg
+
+%h3 Note
+
+%pre
+  note. Remember to do something!
+
+%h3 Auto URL
+
+%pre
+  &lt;http://simplesideias.com.br&gt;
+
+%h3 Link to File
+
+%p 
+  You need to set <code>base_url</code> in your <code>config.yml</code> file.
+
+%pre
+  file. app/models/users.rb
+
+%h2#references References
+
+:markdown
+  - Textile: <http://hobix.com/textile/>
+  - Markdown: <http://daringfireball.net/projects/markdown/syntax>
+
+= render("maintainer")
+
+%h2#contributors Contributors
+
+:markdown
+  * Arthur Zapparoli (<http://arthurgeek.net>)

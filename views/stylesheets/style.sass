@@ -37,18 +37,22 @@ h1, h2, h3, h4, h5, h6
 #page
   width: 700px
   
-p.description
-  font-family: helvetica!
-  font-weight: bold
-  font-size: 30px
-  letter-spacing: -2px
-  margin: 0
-
 #main
   padding: 20px 20px 20px 40px
   
+  & p, li, dd, dt
+    line-height: 160%
+  
   & p
-    margin: 10px 0
+    margin: 15px 0
+    
+    &.description
+      font-family: helvetica!
+      font-weight: bold
+      font-size: 30px
+      letter-spacing: -2px
+      line-height: 120%
+      margin: 0
   
   & ul
     margin: 0 0 0 20px
@@ -95,5 +99,21 @@ p.description
     color: #1d2a42 !important
     padding: 2px
   
+  & a
+    color: #fff
+
+#kitabu
+  background: #29323A url(../images/kitabu.png) repeat-y left
+  color: #fff
+
+  & #header
+    background: #e61c0e
+
+  & p.description
+    color: #D5A858
+
+  & pre, #main code
+    color: #C7BD95
+
   & a
     color: #fff
