@@ -6,7 +6,7 @@
     <meta content='Kitabu, Ruby, PDF, Prince XML, Markdown, Textile' name='keywords' />
     <meta content='Glue 0.0.5' name='generator' />
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
-    <meta content='2009-08-02T02:08:38-03:00' http-equiv='last-update' />
+    <meta content='2009-08-02T11:26:49-03:00' http-equiv='last-update' />
     <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon' />
     <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
   </head>
@@ -92,8 +92,11 @@
         <pre>title: [Your Book Title]&#x000A;copyright: Copyright (c) 2008 [Your Name], All Rights Reserved&#x000A;authors:&#x000A;  - [Your Name]&#x000A;  - [Other Name]&#x000A;subject: [Write down what your book is about]&#x000A;keywords: [The keywords related to your book]&#x000A;theme: eiffel&#x000A;</pre>
         <p>
           If you're writing on a different language, the <code>user.css</code> file can override all
-          the messages added by the <code>layout.css</code>. Examples on doing this coming soon.
+          the messages added by the <code>layout.css</code>. Let's take Brazilian Portuguese for instance;
+          just add the following CSS to <code>templates/user.css</code>: "Chapters" will be translated
+          to "Capítulo" and "Figure" to "Figura".
         </p>
+        <pre>/* translations */&#x000A;div.chapter h2::before { content: "Capítulo " counter(chapter) ; }&#x000A;div.chapter h2 { string-set: header "Capítulo " counter(chapter) ": " content(); }&#x000A;p.figure span.caption:before { content: "Figura " counter(figure) ": "; }&#x000A;</pre>
         <p>
           Now it's time to write your book. All your book content will be placed on the
           text directory. Kitabu requires you to separate your book into chapters.

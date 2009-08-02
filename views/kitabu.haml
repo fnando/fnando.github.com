@@ -95,7 +95,16 @@
 
 %p
   If you're writing on a different language, the <code>user.css</code> file can override all
-  the messages added by the <code>layout.css</code>. Examples on doing this coming soon.
+  the messages added by the <code>layout.css</code>. Let's take Brazilian Portuguese for instance;
+  just add the following CSS to <code>templates/user.css</code>: "Chapters" will be translated
+  to "Capítulo" and "Figure" to "Figura".
+  
+%pre
+  :preserve
+    /* translations */
+    div.chapter h2::before { content: "Capítulo " counter(chapter) ; }
+    div.chapter h2 { string-set: header "Capítulo " counter(chapter) ": " content(); }
+    p.figure span.caption:before { content: "Figura " counter(figure) ": "; }
 
 %p
   Now it's time to write your book. All your book content will be placed on the
