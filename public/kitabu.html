@@ -6,7 +6,7 @@
     <meta content='Kitabu, Ruby, PDF, Prince XML, Markdown, Textile' name='keywords' />
     <meta content='Glue 0.0.5' name='generator' />
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
-    <meta content='2009-08-02T11:26:49-03:00' http-equiv='last-update' />
+    <meta content='2009-08-13T01:32:01-03:00' http-equiv='last-update' />
     <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon' />
     <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
   </head>
@@ -17,7 +17,7 @@
         <p class='tagline'>
           PDF Generator
           <strong class='version'>
-            0.3.6
+            0.3.7
           </strong>
         </p>
       </div>
@@ -214,7 +214,7 @@
         </p>
         <pre>syntax(ruby#get_all_h2_tags). some_file.rb</pre>
         <p>
-          <strong>Nota:</strong>
+          <strong>Note:</strong>
           Makdown uses the same syntax above. You just need to indent your code
           (as usual) and add the <code>syntax.</code> thing as the first line.
         </p>
@@ -235,6 +235,20 @@
           You need to set <code>base_url</code> in your <code>config.yml</code> file.
         </p>
         <pre>file. app/models/users.rb</pre>
+        <h2 id='markdown-processors'>Markdown Processors</h2>
+        <p>
+          By default,
+          <a href="http://github.com/rtomayko/rdiscount/tree/master">RDiscount</a>
+          is the Markdown
+          processor. However, you can switch to different implementations by adding the <code>markdown</code>
+          option to your <code>config.yml</code> file. The processors that can be used are:
+        </p>
+        <ul>
+        <li>peg_markdown (<a href="http://github.com/rtomayko/rpeg-markdown/tree/master">PEGMarkdown</a>)</li>
+        <li>bluecloth (<a href="http://www.deveiate.org/projects/BlueCloth">BlueCloth</a>)</li>
+        <li>maruku (<a href="http://maruku.rubyforge.org/">Maruku</a>)</li>
+        <li>rdiscount</li>
+        </ul>
         <h2 id='references'>References</h2>
         <ul>
         <li>Textile: <a href="http://hobix.com/textile/">http://hobix.com/textile/</a></li>
@@ -250,6 +264,7 @@
         <h2 id='contributors'>Contributors</h2>
         <ul>
         <li>Arthur Zapparoli (<a href="http://arthurgeek.net">http://arthurgeek.net</a>)</li>
+        <li>Clinton R. Nixon (<a href="http://crnixon.org/">http://crnixon.org/</a>)</li>
         </ul>
         <div id='footer'>
           <div id='footer'></div>

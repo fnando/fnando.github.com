@@ -226,7 +226,7 @@
   syntax(ruby#get_all_h2_tags). some_file.rb
 
 %p
-  %strong Nota:
+  %strong Note:
   Makdown uses the same syntax above. You just need to indent your code
   (as usual) and add the <code>syntax.</code> thing as the first line.
 
@@ -263,6 +263,21 @@
 %pre
   file. app/models/users.rb
 
+%h2#markdown-processors Markdown Processors
+
+%p
+  By default, 
+  <a href="http://github.com/rtomayko/rdiscount/tree/master">RDiscount</a>
+  is the Markdown
+  processor. However, you can switch to different implementations by adding the <code>markdown</code>
+  option to your <code>config.yml</code> file. The processors that can be used are:
+
+:markdown
+  - peg_markdown ([PEGMarkdown](http://github.com/rtomayko/rpeg-markdown/tree/master))
+  - bluecloth ([BlueCloth](http://www.deveiate.org/projects/BlueCloth))
+  - maruku ([Maruku](http://maruku.rubyforge.org/))
+  - rdiscount
+
 %h2#references References
 
 :markdown
@@ -275,3 +290,4 @@
 
 :markdown
   * Arthur Zapparoli (<http://arthurgeek.net>)
+  * Clinton R. Nixon (<http://crnixon.org/>)
