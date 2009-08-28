@@ -6,9 +6,9 @@
     <meta content='Kitabu, Ruby, PDF, Prince XML, Markdown, Textile' name='keywords' />
     <meta content='Glue 0.0.5' name='generator' />
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
-    <meta content='2009-08-13T01:32:01-03:00' http-equiv='last-update' />
-    <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon' />
-    <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+    <meta content='2009-08-28T16:48:22-03:00' http-equiv='last-update' />
+    <link href='/github/glue-pages/public/favicon.ico' rel='shortcut icon' type='image/x-icon' />
+    <link href='/github/glue-pages/public/stylesheets/style.css' rel='stylesheet' type='text/css' />
   </head>
   <body id='kitabu'>
     <div id='page'>
@@ -17,7 +17,7 @@
         <p class='tagline'>
           PDF Generator
           <strong class='version'>
-            0.3.8
+            0.3.9
           </strong>
         </p>
       </div>
@@ -235,6 +235,19 @@
           You need to set <code>base_url</code> in your <code>config.yml</code> file.
         </p>
         <pre>file. app/models/users.rb</pre>
+        <p>
+          You can define your own tags by creating a
+          <code>
+            Helper
+          </code>
+          module. Just add something like this to your Rakefile.
+        </p>
+        <pre>KITABU_ROOT = File.dirname(__FILE__)&#x000A;ENV['KITABU_NAME'] ||= File.basename(KITABU_ROOT)&#x000A;&#x000A;module Helpers&#x000A;  def textile_custom(tag, atts, cite, content)&#x000A;    '&lt;p class="custom"&gt;%s&lt;/p&gt;' % content&#x000A;  end&#x000A;end&#x000A;&#x000A;require "kitabu/tasks"</pre>
+        <p>
+          On your text, just use
+          <code>custom. some text</code>
+          and it will be replaced by your helper.
+        </p>
         <h2 id='markdown-processors'>Markdown Processors</h2>
         <p>
           By default,

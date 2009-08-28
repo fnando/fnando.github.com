@@ -11,7 +11,8 @@ site:
   # Set your base url.
   # Include domain and path (if needed).
   # Domain is required for sitemap generation.
-  base_url: http://fnando.github.com/
+  # base_url: http://fnando.github.com/
+  base_url: http://localhost/github/glue-pages/public
   
   # If you're using Apache you can enable `MultiViews`
   # or mod_rewrite and access your URL like 

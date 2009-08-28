@@ -263,6 +263,29 @@
 %pre
   file. app/models/users.rb
 
+%p
+  You can define your own tags by creating a 
+  %code 
+    Helper
+  module. Just add something like this to your Rakefile.
+  
+:plain
+  <pre>KITABU_ROOT = File.dirname(__FILE__)
+  ENV['KITABU_NAME'] ||= File.basename(KITABU_ROOT)
+
+  module Helpers
+    def textile_custom(tag, atts, cite, content)
+      '&lt;p class="custom"&gt;%s&lt;/p&gt;' % content
+    end
+  end
+
+  require "kitabu/tasks"</pre>
+
+%p
+  On your text, just use
+  %code custom. some text
+  and it will be replaced by your helper.
+
 %h2#markdown-processors Markdown Processors
 
 %p
