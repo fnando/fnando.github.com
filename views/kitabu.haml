@@ -156,6 +156,16 @@
   h1 tag is discarded because it's meant to be the book title.
 
 %p
+  To enable TOC you should have Nokogiri or Hpricot installed.
+
+%pre
+  $ sudo gem install nokogiri
+  $ sudo gem install hpricot
+
+%p
+  If both libraries are installed, Nokogiri will be used.
+
+%p
   If you need to link to a specific chapter, you can use the <code>kitabu:titles</code> rake
   task to know what's the permalink that you need. For example, a title 
   <code>Installing Mac OS X</code> will have a permalink <code>installing-mac-os-x</code> and you can

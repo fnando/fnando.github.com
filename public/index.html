@@ -6,7 +6,7 @@
     <meta content='Kitabu, Ruby, PDF, Prince XML, Markdown, Textile' name='keywords' />
     <meta content='Glue 0.0.5' name='generator' />
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
-    <meta content='2009-09-26T13:44:50-03:00' http-equiv='last-update' />
+    <meta content='2009-09-26T18:21:17-03:00' http-equiv='last-update' />
     <link href='/public/favicon.ico' rel='shortcut icon' type='image/x-icon' />
     <link href='/public/stylesheets/style.css' rel='stylesheet' type='text/css' />
   </head>
@@ -17,7 +17,7 @@
         <p class='tagline'>
           PDF Generator
           <strong class='version'>
-            0.4.0
+            0.4.1
           </strong>
         </p>
       </div>
@@ -166,6 +166,14 @@
         <p>
           Kitabu can generate a Table of Contents (TOC) based on your h2-h6 tags. The
           h1 tag is discarded because it's meant to be the book title.
+        </p>
+        <p>
+          To enable TOC you should have Nokogiri or Hpricot installed.
+        </p>
+        <pre>$ sudo gem install nokogiri
+        $ sudo gem install hpricot</pre>
+        <p>
+          If both libraries are installed, Nokogiri will be used.
         </p>
         <p>
           If you need to link to a specific chapter, you can use the <code>kitabu:titles</code> rake
