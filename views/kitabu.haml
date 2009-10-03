@@ -16,7 +16,7 @@
   sudo gem install fnando-kitabu -s http://gems.github.com
 
 %p
-  If you don't need syntax highlighting, you can skip the next steps.
+  If you're running Ruby 1.8 and don't need the syntax highlighting feature, you can skip the next steps.
 
 %h2#syntax-highlighting Syntax Highlighting on Ruby 1.8
 
@@ -49,7 +49,7 @@
 %h2#getting-started Getting started
 
 %p
-  After installing Kitabu and its dependencies, you can create your PDF so easily! 
+  After installing Kitabu and its dependencies, you can easily create your PDF! 
   Just run the following command from your terminal window.
 
 %pre
@@ -138,18 +138,18 @@
 
 %p
   You'll want to see your progress eventually; it's time for you to generate
-  the book PDF. Just run the command <code>rake kitabu:pdf</code> and your book will be 
+  the book PDF. Just run the command <code>rake pdf</code> and your book will be 
   created on the output directory.
 
 %p
   There are other rake tasks you can use:
 
 :markdown
-  * `kitabu:html` - generate a html from your content
-  * `kitabu:syntaxes` - list all available syntaxes
-  * `kitabu:themes` - list all available themes
-  * `kitabu:titles` - list all titles and its permalinks
-  * `kitabu:watch` - watch `text` for any change and automatically generate html
+  * `html` - generate a html from your content
+  * `syntaxes` - list all available syntaxes
+  * `themes` - list all available themes
+  * `titles` - list all titles and its permalinks
+  * `auto` - watch your text for changes and automatically generate html & PDF
 
 %p
   Kitabu can generate a Table of Contents (TOC) based on your h2-h6 tags. The 
@@ -166,7 +166,7 @@
   If both libraries are installed, Nokogiri will be used.
 
 %p
-  If you need to link to a specific chapter, you can use the <code>kitabu:titles</code> rake
+  If you need to link to a specific chapter, you can use the <code>titles</code> rake
   task to know what's the permalink that you need. For example, a title 
   <code>Installing Mac OS X</code> will have a permalink <code>installing-mac-os-x</code> and you can
   link to this chapter by writing

@@ -6,7 +6,7 @@
     <meta content='Kitabu, Ruby, PDF, Prince XML, Markdown, Textile' name='keywords' />
     <meta content='Glue 0.0.5' name='generator' />
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
-    <meta content='2009-09-26T18:21:17-03:00' http-equiv='last-update' />
+    <meta content='2009-10-02T22:19:11-03:00' http-equiv='last-update' />
     <link href='/public/favicon.ico' rel='shortcut icon' type='image/x-icon' />
     <link href='/public/stylesheets/style.css' rel='stylesheet' type='text/css' />
   </head>
@@ -17,7 +17,7 @@
         <p class='tagline'>
           PDF Generator
           <strong class='version'>
-            0.4.1
+            0.4.2
           </strong>
         </p>
       </div>
@@ -30,7 +30,7 @@
         </p>
         <pre>sudo gem install fnando-kitabu -s http://gems.github.com</pre>
         <p>
-          If you don't need syntax highlighting, you can skip the next steps.
+          If you're running Ruby 1.8 and don't need the syntax highlighting feature, you can skip the next steps.
         </p>
         <h2 id='syntax-highlighting'>Syntax Highlighting on Ruby 1.8</h2>
         <p>
@@ -51,7 +51,7 @@
         </p>
         <h2 id='getting-started'>Getting started</h2>
         <p>
-          After installing Kitabu and its dependencies, you can create your PDF so easily!
+          After installing Kitabu and its dependencies, you can easily create your PDF!
           Just run the following command from your terminal window.
         </p>
         <pre>$ kitabu mypdf</pre>
@@ -150,18 +150,18 @@
         </p>
         <p>
           You'll want to see your progress eventually; it's time for you to generate
-          the book PDF. Just run the command <code>rake kitabu:pdf</code> and your book will be
+          the book PDF. Just run the command <code>rake pdf</code> and your book will be
           created on the output directory.
         </p>
         <p>
           There are other rake tasks you can use:
         </p>
         <ul>
-        <li><code>kitabu:html</code> - generate a html from your content</li>
-        <li><code>kitabu:syntaxes</code> - list all available syntaxes</li>
-        <li><code>kitabu:themes</code> - list all available themes</li>
-        <li><code>kitabu:titles</code> - list all titles and its permalinks</li>
-        <li><code>kitabu:watch</code> - watch <code>text</code> for any change and automatically generate html</li>
+        <li><code>html</code> - generate a html from your content</li>
+        <li><code>syntaxes</code> - list all available syntaxes</li>
+        <li><code>themes</code> - list all available themes</li>
+        <li><code>titles</code> - list all titles and its permalinks</li>
+        <li><code>auto</code> - watch your text for changes and automatically generate html &amp; PDF</li>
         </ul>
         <p>
           Kitabu can generate a Table of Contents (TOC) based on your h2-h6 tags. The
@@ -176,7 +176,7 @@
           If both libraries are installed, Nokogiri will be used.
         </p>
         <p>
-          If you need to link to a specific chapter, you can use the <code>kitabu:titles</code> rake
+          If you need to link to a specific chapter, you can use the <code>titles</code> rake
           task to know what's the permalink that you need. For example, a title
           <code>Installing Mac OS X</code> will have a permalink <code>installing-mac-os-x</code> and you can
           link to this chapter by writing
