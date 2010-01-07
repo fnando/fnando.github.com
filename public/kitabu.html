@@ -4,9 +4,9 @@
     <title>Kitabu</title>
     <meta content="A framework for creating e-books from Markdown/Textile text markup using Ruby. Using the Prince PDF generator, you'll be able to get high quality PDFs." name='description' />
     <meta content='Kitabu, Ruby, PDF, Prince XML, Markdown, Textile' name='keywords' />
-    <meta content='Glue 0.0.5' name='generator' />
+    <meta content='Glue 0.0.7' name='generator' />
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
-    <meta content='2009-10-15T00:01:18-03:00' http-equiv='last-update' />
+    <meta content='2009-10-15T00:09:11-03:00' http-equiv='last-update' />
     <link href='/public/favicon.ico' rel='shortcut icon' type='image/x-icon' />
     <link href='/public/stylesheets/style.css' rel='stylesheet' type='text/css' />
   </head>
@@ -17,7 +17,7 @@
         <p class='tagline'>
           PDF Generator
           <strong class='version'>
-            0.4.5
+            0.4.6
           </strong>
         </p>
       </div>
@@ -246,9 +246,7 @@
         <pre>file. app/models/users.rb</pre>
         <p>
           You can define your own tags by creating a
-          <code>
-            Helper
-          </code>
+          <code>Helper</code>
           module. Just add something like this to your Rakefile.
         </p>
         <pre>KITABU_ROOT = File.dirname(__FILE__)&#x000A;ENV['KITABU_NAME'] ||= File.basename(KITABU_ROOT)&#x000A;&#x000A;module Helpers&#x000A;  def textile_custom(tag, atts, cite, content)&#x000A;    '&lt;p class="custom"&gt;%s&lt;/p&gt;' % content&#x000A;  end&#x000A;end&#x000A;&#x000A;require "kitabu/tasks"</pre>
