@@ -6,7 +6,7 @@
     <meta content='Glue, Ruby, Static Site, Haml, Sass, Markdown, Textile' name='keywords' />
     <meta content='Glue 0.0.7' name='generator' />
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
-    <meta content='2009-08-02T02:15:11-03:00' http-equiv='last-update' />
+    <meta content='2010-01-07T09:15:03-02:00' http-equiv='last-update' />
     <link href='/public/favicon.ico' rel='shortcut icon' type='image/x-icon' />
     <link href='/public/stylesheets/style.css' rel='stylesheet' type='text/css' />
   </head>
@@ -17,7 +17,7 @@
         <p class='tagline'>
           Static site generator
           <strong class='version'>
-            0.0.6
+            0.0.7
           </strong>
         </p>
       </div>
@@ -39,7 +39,7 @@
           To install Glue, you’ll need a working Ruby installation with Rubygems.
           If you’re cool with it, just run the following command to install it.
         </p>
-        <pre>sudo gem install fnando-glue -s http://gems.github.com</pre>
+        <pre>sudo gem install glue-site</pre>
         <p>
           After installing Glue and its dependencies, you can create your site so easily!
           Just run the following command from your terminal window.
@@ -54,7 +54,7 @@
           All your site settings are defined in <code>config/glue.yml</code>.
           There are 3 main blocks: <code>site</code>, <code>sitemap</code> and <code>feed</code>.
         </p>
-        <pre>site:&#x000A;  # Set default page title.&#x000A;  title: "The awesome Glue!"&#x000A;&#x000A;  # Set default page description&#x000A;  description: "Glue is a simple static site generator for Ruby that uses Haml, Sass and Textile/Markdown."&#x000A;&#x000A;  # Set default keywords&#x000A;  keywords: "glue, ruby, haml, sass, static site, textile, markdown"&#x000A;&#x000A;  # Set your base url.&#x000A;  # Include domain and path (if needed).&#x000A;  # Domain is required for sitemap generation.&#x000A;  base_url: http://fnando.github.com/&#x000A;&#x000A;  # If you're using Apache you can enable `MultiViews`&#x000A;  # or mod_rewrite and access your URL like &#x000A;  # http://example.com/about instead of http://example.com/about.html&#x000A;  friendly_url: true&#x000A;&#x000A;  # Set your language for feeds and meta tags&#x000A;  language: en-us&#x000A;&#x000A;sitemap:&#x000A;  # Do generate sitemap&#x000A;  enabled: true&#x000A;&#x000A;  # Filters will be applied against full filename.&#x000A;  # Use .*? to match all. Use regular expressions.&#x000A;  filters:&#x000A;    - .*?&#x000A;&#x000A;feed:&#x000A;  # Do generate feed&#x000A;  enabled: true&#x000A;&#x000A;  # Filters will be applied against full filename.&#x000A;  # Use .*? to match all. Use regular expressions.&#x000A;  filters:&#x000A;    - .*?&#x000A;</pre>
+        <pre>site:&#x000A;  # Set default page title.&#x000A;  title: "The awesome Glue!"&#x000A;&#x000A;  # Set default page description&#x000A;  description: "Glue is a simple static site generator for Ruby that uses Haml, Sass and Textile/Markdown."&#x000A;&#x000A;  # Set default keywords&#x000A;  keywords: "glue, ruby, haml, sass, static site, textile, markdown"&#x000A;&#x000A;  # Set your base url.&#x000A;  # Include domain and path (if needed).&#x000A;  # Domain is required for sitemap generation.&#x000A;  base_url: http://fnando.github.com/&#x000A;&#x000A;  # If you're using Apache you can enable `MultiViews`&#x000A;  # or mod_rewrite and access your URL like&#x000A;  # http://example.com/about instead of http://example.com/about.html&#x000A;  friendly_url: true&#x000A;&#x000A;  # Set your language for feeds and meta tags&#x000A;  language: en-us&#x000A;&#x000A;sitemap:&#x000A;  # Do generate sitemap&#x000A;  enabled: true&#x000A;&#x000A;  # Filters will be applied against full filename.&#x000A;  # Use .*? to match all. Use regular expressions.&#x000A;  filters:&#x000A;    - .*?&#x000A;&#x000A;feed:&#x000A;  # Do generate feed&#x000A;  enabled: true&#x000A;&#x000A;  # Filters will be applied against full filename.&#x000A;  # Use .*? to match all. Use regular expressions.&#x000A;  filters:&#x000A;    - .*?&#x000A;</pre>
         <h2 id='views'>Views</h2>
         <p>
           Views are placed in the "views" directory. All <code>.haml</code> files will be exported as <code>.html</code>,
@@ -114,7 +114,7 @@
           </dt>
           <dd>
             Parse a given text as Markdown code.
-            <pre>%p&#x000A;  :markdown&#x000A;    This text will be converted to HTML using &#x000A;    [RDiscount](http://github.com/rtomayko/rdiscount/tree/master).&#x000A;</pre>
+            <pre>%p&#x000A;  :markdown&#x000A;    This text will be converted to HTML using&#x000A;    [RDiscount](http://github.com/rtomayko/rdiscount/tree/master).&#x000A;</pre>
             You can call it directly:
             <pre>%p= markdown("*Markdown* rules!")&#x000A;</pre>
           </dd>
@@ -123,7 +123,7 @@
           </dt>
           <dd>
             Parse a given text as Textile code.
-            <pre>%p&#x000A;  :textile&#x000A;    This text will be converted to HTML using &#x000A;    "RedCloth":http://redcloth.org/.&#x000A;</pre>
+            <pre>%p&#x000A;  :textile&#x000A;    This text will be converted to HTML using&#x000A;    "RedCloth":http://redcloth.org/.&#x000A;</pre>
             You can call it directly:
             <pre>%p= textile("*Textile* rules!")&#x000A;</pre>
           </dd>
